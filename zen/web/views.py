@@ -1,6 +1,6 @@
 import random
 
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import View
 
 # Create your views here.
@@ -47,4 +47,4 @@ Namespaces are one honking great idea -- let's do more of those!
 class ZenView(View):
     def get(self, request):
         lines = [line for line in ZEN.splitlines() if line]
-        return HttpResponse(random.choice(lines))
+        return render(request, 'base.html', {'phrase': random.choice(lines)})
